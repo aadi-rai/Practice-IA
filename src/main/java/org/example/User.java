@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.LinkedList;
+
 public class User {
     private String username;
     private String password;
@@ -13,7 +15,25 @@ public class User {
 
     private long phoneNumber;
     private boolean isAdmin;
+    private LinkedList<Booking> bookings;
 
+
+    public User(String username, String password, String firstName, String surname, String streetAddress,
+                String citySuburb, short postCode, long phoneNumber, boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+
+        this.firstName = firstName;
+        this.surname = surname;
+
+        this.streetAddress = streetAddress;
+        this.citySuburb = citySuburb;
+        this.postCode = postCode;
+
+        this.phoneNumber = phoneNumber;
+        this.isAdmin = isAdmin;
+        this.bookings = new LinkedList<Booking>();
+    }
 
     public String getUsername() {
         return username;
@@ -85,5 +105,17 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public LinkedList<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
+    }
+
+    public void removeBooking(Booking booking) {
+        this.bookings.remove(booking);
     }
 }
