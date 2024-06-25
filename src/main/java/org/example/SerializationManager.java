@@ -7,7 +7,6 @@ import java.io.*;
  * for persistent storage.
  */
 public final class SerializationManager {
-
     /**
      * Serializes an object and writes it to a file.
      * @param obj the object to be written
