@@ -7,6 +7,7 @@ public class Booking {
     private String username;
     private int numTickets;
     private double totalCost;
+    private Event event;
 
     private String additionalDetails; // Input from comments box (e.g. age of attendees)
 
@@ -59,6 +60,14 @@ public class Booking {
 
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public String getAdditionalDetails() {
