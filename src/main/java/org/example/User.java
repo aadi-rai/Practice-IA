@@ -15,7 +15,7 @@ public class User {
 
     private long phoneNumber;
     private boolean isAdmin;
-    private LinkedList<Booking> bookings;
+    private final LinkedList<Booking> bookings;
 
 
     public User(String username, String password, String firstName, String surname, String streetAddress,
