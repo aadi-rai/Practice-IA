@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class User {
     private String username;
@@ -15,7 +15,7 @@ public class User {
 
     private long phoneNumber;
     private boolean isAdmin;
-    private final LinkedList<Booking> bookings;
+    private final ArrayList<Booking> bookings;
 
 
     public User(String username, String password, String firstName, String surname, String streetAddress,
@@ -32,7 +32,7 @@ public class User {
 
         this.phoneNumber = phoneNumber;
         this.isAdmin = isAdmin;
-        this.bookings = new LinkedList<Booking>();
+        this.bookings = new ArrayList<Booking>();
     }
 
     public String getUsername() {
@@ -107,7 +107,7 @@ public class User {
         isAdmin = admin;
     }
 
-    public LinkedList<Booking> getBookings() {
+    public ArrayList<Booking> getBookings() {
         return bookings;
     }
 
