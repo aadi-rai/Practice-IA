@@ -1,8 +1,9 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Controller {
+public class Controller implements Serializable {
     private final ArrayList<User> users;
     private final ArrayList<Booking> bookings;
     private final ArrayList<Event> events;
