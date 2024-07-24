@@ -1,6 +1,5 @@
 package org.example;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -36,7 +35,7 @@ public class Controller {
         return false;
     }
 
-    //<editor-fold desc="getters/setters/add/remove/find methods">
+    //<editor-fold desc="getters/setters">
     public void addEvent(Event event) {
         events.add(event);
     }

@@ -30,6 +30,7 @@ public class Booking {
         this.CCV = CCV;
     }
 
+    //<editor-fold desc="getters/setters">
     public String getBookingID() {
         return bookingID;
     }
@@ -101,4 +102,5 @@ public class Booking {
     public void setCCV(short CCV) {
         this.CCV = CCV;
     }
+    //</editor-fold>
 }

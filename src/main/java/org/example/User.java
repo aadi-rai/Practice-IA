@@ -32,9 +32,10 @@ public class User {
 
         this.phoneNumber = phoneNumber;
         this.isAdmin = isAdmin;
-        this.bookings = new ArrayList<Booking>();
+        bookings = new ArrayList<Booking>();
     }
 
+    //<editor-fold desc="getters/setters">
     public String getUsername() {
         return username;
     }
@@ -112,10 +113,11 @@ public class User {
     }
 
     public void addBooking(Booking booking) {
-        this.bookings.add(booking);
+        bookings.add(booking);
     }
 
     public void removeBooking(Booking booking) {
-        this.bookings.remove(booking);
+        bookings.remove(booking);
     }
+    //</editor-fold>
 }

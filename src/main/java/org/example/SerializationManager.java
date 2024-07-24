@@ -23,7 +23,7 @@ public final class SerializationManager {
     }
 
     /**
-     * Reads ano object and  deserializes it.
+     * Reads an object and deserializes it.
      * @return the deserialized object
      * @param fileName the path to the file to read from
      */

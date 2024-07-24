@@ -21,6 +21,7 @@ public class Event {
         this.available = available;
     }
 
+    //<editor-fold desc="getters/setters">
     public String getEventID() {
         return eventID;
     }
@@ -68,4 +69,5 @@ public class Event {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+    //</editor-fold>
 }
