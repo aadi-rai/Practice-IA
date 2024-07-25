@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginGUI extends JPanel {
+public class LoginGUI extends JPanel implements CreateUI {
     private final MainFrame mainFrame;
     private final Controller controller;
 
@@ -14,6 +14,12 @@ public class LoginGUI extends JPanel {
 
         this.mainFrame = mainFrame;
         this.controller = controller;
+
+       createUI();
+    }
+
+    public void createUI() {
+        removeAll();
 
         //<editor-fold desc="UI Creation">
         MainFrame.createPanel(this, 200, 100, 600, 600, Color.BLUE);
@@ -40,7 +46,11 @@ public class LoginGUI extends JPanel {
         confirmButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (controller.login(usernameField.getText(), passwordField.getText())) {
-                    mainFrame.switchPanel(MainFrame.USER_GUI);
+                    if (controller.getCurrentUser().isAdmin()) {
+                        mainFrame.switchPanel(MainFrame.ADMIN_GUI);
+                    } else {
+                        mainFrame.switchPanel(MainFrame.USER_GUI);
+                    }
                 } else {
                     invalidLabel.setVisible(true);
                 }

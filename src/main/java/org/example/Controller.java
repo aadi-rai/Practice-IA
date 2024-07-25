@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller implements Serializable {
@@ -37,6 +38,10 @@ public class Controller implements Serializable {
     }
 
     //<editor-fold desc="getters/setters">
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
     public void addEvent(Event event) {
         events.add(event);
     }
@@ -52,6 +57,19 @@ public class Controller implements Serializable {
             }
         }
         return null;
+    }
+
+    public Event findEventByDateString(String date) {
+        for (Event event : events) {
+            if (MainFrame.formatter.format(event.getDate()).equals(date)) {
+                return event;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
     }
 
     public void addBooking(Booking booking) {
@@ -77,6 +95,10 @@ public class Controller implements Serializable {
 
     public void removeUser(User user) {
         users.remove(user);
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
     public User findUser(String username) {
