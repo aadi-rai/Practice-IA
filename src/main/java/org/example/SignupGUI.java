@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SignupGUI extends JPanel {
+public class SignupGUI extends JPanel implements CreateUI {
     private final MainFrame mainFrame;
     private final Controller controller;
 
@@ -14,6 +14,12 @@ public class SignupGUI extends JPanel {
 
         this.mainFrame = mainFrame;
         this.controller = controller;
+
+        createUI();
+    }
+
+    public void createUI() {
+        removeAll();
 
         //<editor-fold desc="UI creation">
         MainFrame.createLabel(this, "Enter your details", 100, 100, 1000, 100, MainFrame.font);

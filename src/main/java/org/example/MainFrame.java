@@ -6,6 +6,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 
 public class MainFrame extends JFrame {
@@ -26,6 +29,9 @@ public class MainFrame extends JFrame {
     final static Font font = new Font("Serif", Font.PLAIN, 54);
     final static Font secondFont = new Font("Serif", Font.PLAIN, 30);
 
+    private final HashMap<String, CreateUI> panels;
+
+    final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
 
     public MainFrame() throws IOException, ClassNotFoundException {
         super("Disaster Area");
@@ -52,20 +58,44 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
+        panels = new HashMap<>();
+
         JPanel mainGUI = new MainGUI(this, controller);
+        panels.put(MAIN_GUI, (CreateUI) mainGUI);
         mainPanel.add(mainGUI, MAIN_GUI);
+
         JPanel loginGUI = new LoginGUI(this, controller);
+        panels.put(LOGIN_GUI, (CreateUI) loginGUI);
         mainPanel.add(loginGUI, LOGIN_GUI);
+
         JPanel signupGUI = new SignupGUI(this, controller);
+        panels.put(SIGNUP_GUI, (CreateUI) signupGUI);
         mainPanel.add(signupGUI, SIGNUP_GUI);
+
+        JPanel userGUI = new UserGUI(this, controller);
+        panels.put(USER_GUI, (CreateUI) userGUI);
+        mainPanel.add(userGUI, USER_GUI);
+
+        JPanel editPersonGUI = new EditPersonGUI(this, controller);
+        panels.put(EDIT_PERSON_GUI, (CreateUI) editPersonGUI);
+        mainPanel.add(editPersonGUI, EDIT_PERSON_GUI);
+
+        JPanel newBookingGUI = new NewBookingGUI(this, controller);
+        panels.put(NEW_BOOKING_GUI, (CreateUI) newBookingGUI);
+        mainPanel.add(newBookingGUI, NEW_BOOKING_GUI);
 
         cardLayout.show(mainPanel, MAIN_GUI);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
+
+        //controller.addEvent(new Event("abcd", LocalDate.of(2008, 1, 28), "somehwere", 10, 100, true));
+        //controller.addEvent(new Event("defg", LocalDate.of(2028, 7, 7), "elsewhere", 20, 50, true));
+
 
         pack();
     }
 
     public void switchPanel(String panelName) {
+        panels.get(panelName).createUI();
         cardLayout.show(mainPanel, panelName);
     }
 
