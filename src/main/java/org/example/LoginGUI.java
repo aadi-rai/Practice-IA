@@ -15,60 +15,28 @@ public class LoginGUI extends JPanel {
         this.mainFrame = mainFrame;
         this.controller = controller;
 
-        Font font = new Font("Serif", Font.PLAIN, 54);
-        Font secondFont = new Font("Serif", Font.PLAIN, 30);
+        //<editor-fold desc="UI Creation">
+        MainFrame.createPanel(this, 200, 100, 600, 600, Color.BLUE);
 
-        JPanel logoPanel = new JPanel();
-        logoPanel.setBackground(Color.BLUE); logoPanel.setOpaque(true);
-        logoPanel.setLocation(200, 100);
-        logoPanel.setSize(new Dimension(600, 600));
-        add(logoPanel);
+        MainFrame.createLabel(this, "Disaster Area Event Booking", 100, 750, 800, 80, MainFrame.font);
 
-        JLabel companyNameLabel = new JLabel("Disaster Area Event Booking");
-        companyNameLabel.setFont(font);
-        companyNameLabel.setLocation(100, 750);
-        companyNameLabel.setSize(new Dimension(800, 80));
-        add(companyNameLabel);
-
-        JPanel separatorPanel = new JPanel();
-        separatorPanel.setBackground(Color.BLACK); separatorPanel.setOpaque(true);
-        separatorPanel.setLocation(998, 0);
-        separatorPanel.setSize(new Dimension(4, 900));
-        add(separatorPanel);
-
-        JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setLocation(1100, 175);
-        usernameLabel.setSize(new Dimension(200, 25));
-        usernameLabel.setFont(secondFont);
-        add(usernameLabel);
+        MainFrame.createPanel(this, 998, 0, 4, 900, Color.BLACK);
 
         JTextField usernameField = new JTextField();
-        usernameField.setLocation(1100, 200);
-        usernameField.setSize(new Dimension(400, 50));
-        usernameField.setFont(secondFont);
-        add(usernameField);
-
-        JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setLocation(1100, 350);
-        passwordLabel.setSize(new Dimension(200, 25));
-        passwordLabel.setFont(secondFont);
-        add(passwordLabel);
+        MainFrame.createLabelFieldPair(this, usernameField, "Username:", 1100, 175);
 
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setLocation(1100, 375);
-        passwordField.setSize(new Dimension(400, 50));
-        passwordField.setFont(secondFont);
-        add(passwordField);
+        MainFrame.createLabelFieldPair(this, passwordField, "Password:", 1100, 375);
 
         JLabel invalidLabel = new JLabel("Invalid Login");
-        invalidLabel.setFont(secondFont);
-        invalidLabel.setForeground(Color.RED);
-        invalidLabel.setLocation(1100, 725);
-        invalidLabel.setSize(new Dimension(400, 50));
-        invalidLabel.setVisible(false);
-        add(invalidLabel);
+        MainFrame.setupTextComponent(this, invalidLabel, 1100, 725, 400, 50, MainFrame.secondFont);
+        invalidLabel.setForeground(Color.RED); invalidLabel.setVisible(false);
 
         JButton confirmButton = new JButton("Log In");;
+        MainFrame.setupTextComponent(this, confirmButton, 1100, 600, 400, 100, MainFrame.font);
+        //</editor-fold>
+
+        //<editor-fold desc="Functionality">
         confirmButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (controller.login(usernameField.getText(), passwordField.getText())) {
@@ -78,9 +46,6 @@ public class LoginGUI extends JPanel {
                 }
             }
         });
-        confirmButton.setFont(font);
-        confirmButton.setLocation(1100, 600);
-        confirmButton.setSize(new Dimension(400, 100));
-        add(confirmButton);
+        //</editor-fold>
     }
 }

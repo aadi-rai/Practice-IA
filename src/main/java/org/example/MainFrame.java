@@ -23,6 +23,9 @@ public class MainFrame extends JFrame {
     final static String EDIT_EVENT_GUI   = "8";
     final static String NEW_BOOKING_GUI  = "9";
 
+    final static Font font = new Font("Serif", Font.PLAIN, 54);
+    final static Font secondFont = new Font("Serif", Font.PLAIN, 30);
+
 
     public MainFrame() throws IOException, ClassNotFoundException {
         super("Disaster Area");
@@ -53,6 +56,8 @@ public class MainFrame extends JFrame {
         mainPanel.add(mainGUI, MAIN_GUI);
         JPanel loginGUI = new LoginGUI(this, controller);
         mainPanel.add(loginGUI, LOGIN_GUI);
+        JPanel signupGUI = new SignupGUI(this, controller);
+        mainPanel.add(signupGUI, SIGNUP_GUI);
 
         cardLayout.show(mainPanel, MAIN_GUI);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -63,4 +68,36 @@ public class MainFrame extends JFrame {
     public void switchPanel(String panelName) {
         cardLayout.show(mainPanel, panelName);
     }
+
+    public static void createPanel(JPanel panel, int x, int y, int w, int h, Color color) {
+        JPanel newPanel = new JPanel();
+        newPanel.setBackground(color);
+        newPanel.setOpaque(true);
+        newPanel.setLocation(x, y);
+        newPanel.setSize(w, h);
+        panel.add(newPanel);
+    }
+
+    public static void createLabel(JPanel panel, String text, int x, int y, int w, int h, Font f) {
+        JLabel newLabel = new JLabel(text);
+        setupTextComponent(panel, newLabel, x, y, w, h, f);
+    }
+
+    public static void createLabelFieldPair(JPanel panel, JTextField field, String label, int x, int y) {
+        createLabel(panel, label, x, y, 400, 25, secondFont);
+
+        field.setFont(secondFont);
+        field.setLocation(x, y+25);
+        field.setSize(new Dimension(400, 50));
+        panel.add(field);
+    }
+
+    public static void setupTextComponent(JPanel panel, JComponent component, int x, int y, int w, int h, Font f) {
+        component.setFont(f);
+        component.setLocation(x, y);
+        component.setSize(w, h);
+        panel.add(component);
+    }
+
+
 }

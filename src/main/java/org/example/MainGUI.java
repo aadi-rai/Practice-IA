@@ -15,46 +15,32 @@ public class MainGUI extends JPanel {
         this.mainFrame = mainFrame;
         this.controller = controller;
 
-        Font font = new Font("Serif", Font.PLAIN, 54);
+        //<editor-fold desc="UI Creation">
+        MainFrame.createPanel(this, 200, 100, 600, 600, Color.BLUE);
 
-        JPanel logoPanel = new JPanel();
-        logoPanel.setBackground(Color.BLUE); logoPanel.setOpaque(true);
-        logoPanel.setLocation(200, 100);
-        logoPanel.setSize(new Dimension(600, 600));
-        add(logoPanel);
+        MainFrame.createLabel(this, "Disaster Area Event Booking", 100, 750, 800, 80, MainFrame.font);
 
-        JLabel companyNameLabel = new JLabel("Disaster Area Event Booking");
-        companyNameLabel.setFont(font);
-        companyNameLabel.setLocation(100, 750);
-        companyNameLabel.setSize(new Dimension(800, 80));
-        add(companyNameLabel);
-
-        JPanel separatorPanel = new JPanel();
-        separatorPanel.setBackground(Color.BLACK); separatorPanel.setOpaque(true);
-        separatorPanel.setLocation(998, 0);
-        separatorPanel.setSize(new Dimension(4, 900));
-        add(separatorPanel);
+        MainFrame.createPanel(this, 998, 0, 4, 900, Color.BLACK);
 
         JButton loginButton = new JButton("Log In");;
+        MainFrame.setupTextComponent(this, loginButton, 1100, 200, 400, 200, MainFrame.font);
+
+        JButton signupButton = new JButton("Sign Up");;
+        MainFrame.setupTextComponent(this, signupButton, 1100, 500, 400, 200, MainFrame.font);
+        //</editor-fold>
+
+        //<editor-fold desc="Functionality">
         loginButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 mainFrame.switchPanel(MainFrame.LOGIN_GUI);
             }
         });
-        loginButton.setFont(font);
-        loginButton.setLocation(1100, 200);
-        loginButton.setSize(new Dimension(400, 200));
-        add(loginButton);
 
-        JButton signupButton = new JButton("Sign Up");;
-        loginButton.addActionListener(new ActionListener(){
+        signupButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 mainFrame.switchPanel(MainFrame.SIGNUP_GUI);
             }
         });
-        signupButton.setFont(font);
-        signupButton.setLocation(1100, 500);
-        signupButton.setSize(new Dimension(400, 200));
-        add(signupButton);
+        //</editor-fold>
     }
 }
